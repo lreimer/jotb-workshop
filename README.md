@@ -6,7 +6,7 @@ This workshop focuses on modern and efficient Inter Process Communication (IPC) 
 - Brief introduction, workshop agenda and tech check
 - Discussion of REST and gRPC (and other IPC mechanisms) with pros and cons
 - Define and Implement Protobuf Serialization with Quarkus and JAX-RS
-- Define and Implement gRPC API with Quarkus
+- Define and Implement gRPC API and client with Quarkus
 - Generate and build a matching REST API Gateway (in Go) for the gRPC service
 - Generate and build a gRPC Web client (in TypeScript) for the gRPC service
 - Wrap-up and Outlook

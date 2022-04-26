@@ -8,26 +8,27 @@ build:
     gitCommit: {}
   artifacts:    
     # for the Quarkus demo
-    - image: lreimer/quarkus-beer-rest
+    - image: quarkus-beer-rest
       context: quarkus-beer-rest/
       docker:
         dockerfile: quarkus-beer-rest/src/main/docker/Dockerfile.jvm
 
-    - image: lreimer/quarkus-beer-grpc
+    - image: quarkus-beer-grpc
       context: quarkus-beer-grpc/
       docker:
         dockerfile: quarkus-beer-grpc/src/main/docker/Dockerfile.jvm
     
     # for gRPC ecosystem demo
-    - image: lreimer/grpc-beer-nginx
+    - image: grpc-beer-nginx
       context: grpc-beer-nginx/
 
-    - image: lreimer/grpc-beer-gateway
+    - image: grpc-beer-gateway
       context: grpc-beer-gateway/
       
-    - image: lreimer/grpc-beer-envoy
+    - image: grpc-beer-envoy
       context: grpc-beer-envoy/
   local:
+    push: false
     useBuildkit: true
     useDockerCLI: false
 
