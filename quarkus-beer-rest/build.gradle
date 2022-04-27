@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'io.quarkus'
     id 'idea'
-    id "com.google.protobuf" version "0.8.18"
 }
 
 repositories {
@@ -16,8 +15,6 @@ dependencies {
     implementation 'io.quarkus:quarkus-resteasy'
     implementation "io.quarkus:quarkus-smallrye-health"
     implementation 'io.quarkus:quarkus-arc'
-
-    implementation 'com.google.protobuf:protobuf-java:3.19.4'
 
     implementation "org.mapstruct:mapstruct:1.4.2.Final"
     annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
@@ -42,13 +39,3 @@ compileJava {
 compileTestJava {
     options.encoding = 'UTF-8'
 }
-
-protobuf {
-    // Configure the protoc executable
-    protoc {
-        // Download from repositories
-        artifact = 'com.google.protobuf:protoc:3.19.4'
-    }
-}
-
-sourceSets.main.java.srcDirs += ['build/generated/source/proto/main/java']

@@ -7,26 +7,30 @@ build:
   tagPolicy:
     gitCommit: {}
   artifacts:    
-    # for the Quarkus demo
+    # exercise-1
     - image: quarkus-beer-rest
       context: quarkus-beer-rest/
       docker:
         dockerfile: quarkus-beer-rest/src/main/docker/Dockerfile.jvm
 
-    - image: quarkus-beer-grpc
-      context: quarkus-beer-grpc/
-      docker:
-        dockerfile: quarkus-beer-grpc/src/main/docker/Dockerfile.jvm
+    # exercise-2
+    #- image: quarkus-beer-grpc
+    #  context: quarkus-beer-grpc/
+    #  docker:
+    #    dockerfile: quarkus-beer-grpc/src/main/docker/Dockerfile.jvm
     
-    # for gRPC ecosystem demo
-    - image: grpc-beer-nginx
-      context: grpc-beer-nginx/
-
-    - image: grpc-beer-gateway
-      context: grpc-beer-gateway/
+    # exercise-3
+    #- image: grpc-beer-gateway
+    #  context: grpc-beer-gateway/
       
-    - image: grpc-beer-envoy
-      context: grpc-beer-envoy/
+    # exercise-4
+    #- image: grpc-beer-envoy
+    #  context: grpc-beer-envoy/
+
+    # exercise-5
+    #- image: grpc-beer-nginx
+    #  context: grpc-beer-nginx/
+
   local:
     push: false
     useBuildkit: true
@@ -35,46 +39,52 @@ build:
 deploy:
   kubectl:
     manifests: 
-      # for the Quarkus demo
+      # exercise-1
       - quarkus-beer-rest/k8s/*.yaml
 
-      - quarkus-beer-grpc/k8s/*.yaml
-      - grpc-beer-ui/k8s/*.yaml
+      #- quarkus-beer-grpc/k8s/*.yaml
+      #- grpc-beer-ui/k8s/*.yaml
 
-      - grpc-beer-nginx/k8s/*.yaml
-      - grpc-beer-gateway/k8s/*.yaml
-      - grpc-beer-envoy/k8s/*.yaml
-      
+      #- grpc-beer-gateway/k8s/*.yaml
+      #- grpc-beer-envoy/k8s/*.yaml
+      #- grpc-beer-nginx/k8s/*.yaml
+
 portForward:
-  # for the Quarkus demo
+  # exercise-1
   - resourceName: rest-beer-service
     resourceType: service
     namespace: default
     port: 8080
     localPort: 18080
-  - resourceName: grpc-beer-service
-    resourceType: service
-    namespace: default
-    port: 9090
-    localPort: 19090
 
-  - resourceName: grpc-beer-gateway
-    resourceType: service
-    namespace: default
-    port: 8090
-    localPort: 18090
-  - resourceName: grpc-beer-envoy
-    resourceType: service
-    namespace: default
-    port: 8091
-    localPort: 18091
-  - resourceName: grpc-beer-nginx
-    resourceType: service
-    namespace: default
-    port: 8888
-    localPort: 18888
-  - resourceName: grpc-beer-ui
-    resourceType: service
-    namespace: default
-    port: 6969
-    localPort: 16969
+  # exercise-2
+  #- resourceName: grpc-beer-service
+  #  resourceType: service
+  #  namespace: default
+  #  port: 9090
+  #  localPort: 19090
+  #- resourceName: grpc-beer-ui
+  #  resourceType: service
+  #  namespace: default
+  #  port: 6969
+  #  localPort: 16969
+
+  # exercise-3
+  #- resourceName: grpc-beer-gateway
+  #  resourceType: service
+  #  namespace: default
+  #  port: 8090
+  #  localPort: 18090
+
+  # exercise-4
+  #- resourceName: grpc-beer-envoy
+  #  resourceType: service
+  #  namespace: default
+  #  port: 8091
+  #  localPort: 18091
+
+  #- resourceName: grpc-beer-nginx
+  #  resourceType: service
+  #  namespace: default
+  #  port: 8888
+  #  localPort: 18888
