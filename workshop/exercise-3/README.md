@@ -13,8 +13,7 @@ To setup your Go environment, follow the instructions found at https://github.co
 The process of generating the required Go sources from the Proto files is a bit tedious when done by hand or
 calling the protoc compiler on the command line. The tool Buf greatly simplifies the process.
 
-First we need to configure Buf with the correct dependencies and proto source roots. Create a file `buf.yaml` in the
-`grpc-beer-gateway/` directory with the following content.
+First we need to configure Buf with the correct dependencies and proto source roots. Create a file `buf.yaml` in the `grpc-beer-gateway/` directory with the following content.
 ```yaml
 version: v1beta1
 name: github.com/lreimer/jotb-workshop
@@ -28,8 +27,7 @@ build:
     - proto
 ```
 
-Next we need to configure the different protoc plugins used to generate the required Go source files as well as an
-OpenAPIv2 definition of the REST interface. Create a file `buf.gen.yaml` in the `grpc-beer-gateway/` directory with the following content. 
+Next we need to configure the different protoc plugins used to generate the required Go source files as well as an OpenAPIv2 definition of the REST interface. Create a file `buf.gen.yaml` in the `grpc-beer-gateway/` directory with the following content. 
 ```yaml
 version: v1beta1
 plugins:
@@ -47,6 +45,8 @@ plugins:
   - name: openapiv2
     out: openapiv2
 ```
+
+Finally, you have to run `buf generate` to generate all the artifacts from the proto file.
 
 ## Enhance gRPC Service with Google HTTP API options
 
