@@ -18,6 +18,8 @@ build:
     #  context: quarkus-beer-grpc/
     #  docker:
     #    dockerfile: quarkus-beer-grpc/src/main/docker/Dockerfile.jvm
+    #- image: grpc-beer-nginx
+    #  context: grpc-beer-nginx/
     
     # exercise-3
     #- image: grpc-beer-gateway
@@ -26,10 +28,6 @@ build:
     # exercise-4
     #- image: grpc-beer-envoy
     #  context: grpc-beer-envoy/
-
-    # exercise-5
-    #- image: grpc-beer-nginx
-    #  context: grpc-beer-nginx/
 
   local:
     push: false
@@ -42,12 +40,16 @@ deploy:
       # exercise-1
       - quarkus-beer-rest/k8s/*.yaml
 
+      # exercise-2
       #- quarkus-beer-grpc/k8s/*.yaml
       #- grpc-beer-ui/k8s/*.yaml
-
-      #- grpc-beer-gateway/k8s/*.yaml
-      #- grpc-beer-envoy/k8s/*.yaml
       #- grpc-beer-nginx/k8s/*.yaml
+
+      # exercise-3
+      #- grpc-beer-gateway/k8s/*.yaml
+
+      # exercise-4
+      #- grpc-beer-envoy/k8s/*.yaml
 
 portForward:
   # exercise-1
@@ -68,6 +70,11 @@ portForward:
   #  namespace: default
   #  port: 6969
   #  localPort: 16969
+  #- resourceName: grpc-beer-nginx
+  #  resourceType: service
+  #  namespace: default
+  #  port: 8888
+  #  localPort: 18888
 
   # exercise-3
   #- resourceName: grpc-beer-gateway
@@ -82,9 +89,3 @@ portForward:
   #  namespace: default
   #  port: 8091
   #  localPort: 18091
-
-  #- resourceName: grpc-beer-nginx
-  #  resourceType: service
-  #  namespace: default
-  #  port: 8888
-  #  localPort: 18888

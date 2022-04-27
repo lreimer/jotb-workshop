@@ -47,7 +47,6 @@ public class BeerGrpcService extends BeerServiceGrpc.BeerServiceImplBase {
             responseObserver.onNext(GetBeerResponse.newBuilder().setBeer(beer).build());
         }
         responseObserver.onCompleted();
-
     }
 
     @Override

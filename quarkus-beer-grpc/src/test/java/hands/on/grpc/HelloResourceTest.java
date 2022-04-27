@@ -15,7 +15,7 @@ public class HelloResourceTest {
                 .when().get("/hello")
                 .then()
                 .statusCode(200)
-                .body(is("Hello JavaLand 2022!"));
+                .body(is("Hello J on the Beach 2022!"));
     }
 
 }

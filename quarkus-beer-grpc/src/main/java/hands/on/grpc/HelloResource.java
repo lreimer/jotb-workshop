@@ -11,13 +11,13 @@ import javax.ws.rs.core.MediaType;
 @Path("/hello")
 public class HelloResource {
 
-    @GrpcClient("greeter")
-    HelloGrpcGrpc.HelloGrpcBlockingStub stub;
+    @GrpcClient
+    HelloGrpc stub;
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         Log.info("Hello REST API called");
-        return stub.sayHello(HelloRequest.newBuilder().setName("JavaLand 2022").build()).getMessage();
+        return stub.sayHello(HelloRequest.newBuilder().setName("J on the Beach 2022").build()).await().indefinitely().getMessage();
     }
 }
