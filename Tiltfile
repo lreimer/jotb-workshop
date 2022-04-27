@@ -1,13 +1,12 @@
 # -*- mode: Python -*-
 
-# the Quarkus beer REST service
 # exercise-1
-# local_resource('quarkus-beer-rest-build', './gradlew assemble', dir='quarkus-beer-rest',
-#   deps=['./quarkus-beer-rest/build.gradle', './quarkus-beer-rest/src/'], labels=['Quarkus'])
-# docker_build('quarkus-beer-rest', './quarkus-beer-rest/', 
-#   dockerfile='quarkus-beer-rest/src/main/docker/Dockerfile.jvm', only=['./build/'])
-# k8s_yaml(['quarkus-beer-rest/k8s/deployment.yaml', 'quarkus-beer-rest/k8s/service.yaml'])
-# k8s_resource(workload='rest-beer-service', port_forwards=[port_forward(18080, 8080, 'REST API')], labels=['Quarkus'])
+local_resource('quarkus-beer-rest-build', './gradlew assemble', dir='quarkus-beer-rest',
+  deps=['./quarkus-beer-rest/build.gradle', './quarkus-beer-rest/src/'], labels=['Quarkus'])
+docker_build('quarkus-beer-rest', './quarkus-beer-rest/', 
+  dockerfile='quarkus-beer-rest/src/main/docker/Dockerfile.jvm', only=['./build/'])
+k8s_yaml(['quarkus-beer-rest/k8s/deployment.yaml', 'quarkus-beer-rest/k8s/service.yaml'])
+k8s_resource(workload='rest-beer-service', port_forwards=[port_forward(18080, 8080, 'REST API')], labels=['Quarkus'])
 
 # the Quarkus beer gRPC service
 # exercise-2

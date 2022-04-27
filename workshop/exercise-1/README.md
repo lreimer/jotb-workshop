@@ -20,6 +20,17 @@ If you want to start yourself, go to the Quarkus webpage at https://code.quarkus
 Otherwise, open the `quarkus-beer-rest/` project in your IDE. The `quarkus-beer-rest/README.md` contains instructions
 on how to build and run the service locally.
 
+```bash
+# local development
+./gradlew quarkusDev
+
+# build and deploy microservice
+skaffold dev --no-prune=false --cache-artifacts=false
+
+# alternatively, use Tilt
+tilt up
+```
+
 ## Protocol Buffers Definition and Build Integration
 
 First, we need to extend the Gradle build with the Protobuf Gradle plugin, its configuration and dependency.
@@ -98,4 +109,12 @@ message DeleteBeerRequest {
 }
 ```
 
-# 
+# Using Protocoll Buffers with JAX-RS
+
+Protocol Buffers can be used in JAX-RS using a `MessageBodyReader` and `MessageBodyWriter` implementation.
+In order to use the generated Protobuf message payloads we need to implement a JAX-RS endpoint and methods.
+
+- Copy the `protobuf/` directory and the contained Java files into the `src/main/java/hands/on/grcp/` directory.
+- Copy the `ProtoResource.java` file into the `src/main/java/hands/on/grcp/` directory.
+- Copy the `ProtoResourceTest.java` file into the `src/test/java/hands/on/grcp/` directory.
+

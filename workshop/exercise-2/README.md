@@ -16,4 +16,4 @@ gRPC is a modern, high performance, open source and  universal RPC framework.
 Go to the Quarkus webpage at https://code.quarkus.io and select the following packages:
 - gRPC
 - RESTeasy Classic
-- SmallRye Health 
+- SmallRye Health
