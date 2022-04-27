@@ -1,4 +1,4 @@
-module github.com/lreimer/from-rest-to-grpc/grpc-beer-gateway
+module github.com/lreimer/jotb-workshop/grpc-beer-gateway
 
 go 1.17
 
